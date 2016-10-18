@@ -65,7 +65,19 @@ import OpenSettings from 'react-native-open-settings';
 
 And then, where you want to open the settings, just do
 ```javascript
-OpenSettings.openSettings()
+
+// Check if location is enabled
+
+OpenSettings.isLocationEnabled().then((isLocationEnabled) => {
+  //isLocationEnabled is a boolean
+})
+
+// Open app permissions page 
+OpenSettings.openAppPermissionsSettings()
+
+// Open location settings page 
+OpenSettings.openLocationSettings()
+
 ```
 
 Have fun!
