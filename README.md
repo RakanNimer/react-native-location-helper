@@ -78,6 +78,16 @@ OpenSettings.openAppPermissionsSettings()
 // Open location settings page 
 OpenSettings.openLocationSettings()
 
+// Very fast country grabbing from locale settings
+OpenSettings.getCountryCode().then((countryCode) => { 
+  console.log(countryCode); // OUTPUT : US or LB or ...
+})
+
+// Very fast location grabbing. returns "none" if lastKnown result is null
+OpenSettings.getLastKnownLocation().then((result) => { 
+  console.log(result); 
+})
+
 ```
 
 Have fun!
