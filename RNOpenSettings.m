@@ -25,7 +25,6 @@ RCT_EXPORT_METHOD(getLastKnownLocation: (RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     CLLocationManager * locationManager = [[CLLocationManager alloc] init];
     CLLocation * lastKnownLocation = [locationManager location];
-    NSString * result = [NSString stringWithFormat:@"%@", lastKnownLocation];
     if (lastKnownLocation == nil){
         resolve(@"none");
     }
