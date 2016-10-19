@@ -1,16 +1,21 @@
 package com.opensettings;
 
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 import android.text.TextUtils;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.WritableMap;
 
 public class OpenSettings extends ReactContextBaseJavaModule {
 
@@ -75,5 +80,25 @@ public class OpenSettings extends ReactContextBaseJavaModule {
          return !TextUtils.isEmpty(locationProviders);
        }
     }
+
+    @ReactMethod
+    public void getLastKnownLocation(Promise promise) {
+      String locationProvider = LocationManager.NETWORK_PROVIDER;
+      LocationManager locationManager = (LocationManager) this.reactContext.getSystemService(Context.LOCATION_SERVICE);
+      Location lastKnownLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+      if (lastKnownLocation == null) {
+        promise.resolve("none");
+      }
+      else {
+        promise.resolve(lastKnownLocation);
+      }
+    }
+
+    @ReactMethod
+    public void getCountryCode(Promise promise) {
+      String countryCode = this.reactContext.getResources().getConfiguration().locale.getCountry();
+      promise.resolve(countryCode);
+    }
+
     //endregion
 }
