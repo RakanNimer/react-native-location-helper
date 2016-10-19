@@ -1,4 +1,4 @@
-# react-native-open-settings
+# react-native-location-helper
 
 [![npm
 version](https://badge.fury.io/js/react-native-open-settings@2x.png)](http://badge.fury.io/js/react-native-open-settings)
